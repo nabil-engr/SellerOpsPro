@@ -99,6 +99,17 @@ Linux/macOS:
 ./build.sh
 ```
 
+## Vercel deployment
+
+The repository includes a root-level `vercel.json` because the Angular application is
+nested under `client/sellerops-web`. Import the repository with the Vercel **Root
+Directory** left at the repository root (`.`). The checked-in configuration installs
+the frontend dependencies, runs the Angular production build, and publishes
+`client/sellerops-web/dist/sellerops-web/browser`.
+
+The ASP.NET Core API is not hosted by this static Vercel deployment. Configure or host
+the API separately before enabling forms that submit to `/api`.
+
 The scripts:
 
 1. install Angular dependencies,
