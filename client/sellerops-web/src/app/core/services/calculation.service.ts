@@ -393,7 +393,7 @@ export class CalculationService {
           }
           output = url.toString();
         } catch {
-          output = 'Enter a valid absolute URL such as https://example.com/product';
+          output = 'Enter a valid absolute URL such as https://store.test/product';
         }
         return this.result('Campaign URL ready', [['Generated URL', output]], undefined, output);
       }

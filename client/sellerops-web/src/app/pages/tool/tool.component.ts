@@ -3,6 +3,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CATEGORY_MAP, TOOL_MAP, TOOLS } from '../../core/data/tools.data';
+import { GUIDES } from '../../core/data/guides.data';
+import { GuideDefinition } from '../../core/models/guide.model';
 import { CalculatorResult, ToolDefinition } from '../../core/models/tool.model';
 import { CalculationService } from '../../core/services/calculation.service';
 import { SeoService } from '../../core/services/seo.service';
@@ -155,6 +157,15 @@ import { ImageCompressorComponent } from '../../features/image-compressor/image-
               <a [routerLink]="['/tools', related.slug]">{{ related.name }} →</a>
             }
           </div>
+          @if (relatedGuides.length) {
+            <div class="card sidebar-card">
+              <span class="eyebrow">Learn the workflow</span>
+              <h2>Related seller guides</h2>
+              @for (guide of relatedGuides; track guide.slug) {
+                <a [routerLink]="['/guides', guide.slug]">{{ guide.title }} →</a>
+              }
+            </div>
+          }
         </aside>
       </section>
     } @else {
@@ -259,6 +270,11 @@ export class ToolComponent {
           0,
           6,
         )
+      : [];
+  }
+  protected get relatedGuides(): GuideDefinition[] {
+    return this.tool
+      ? GUIDES.filter((guide) => guide.category === this.tool!.category).slice(0, 3)
       : [];
   }
   protected reset(): void {

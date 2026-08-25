@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { GUIDE_MAP } from '../../core/data/guides.data';
+import { GUIDE_MAP, GUIDES } from '../../core/data/guides.data';
 import { GuideDefinition } from '../../core/models/guide.model';
 import { CATEGORY_MAP, TOOL_MAP } from '../../core/data/tools.data';
 import { ToolDefinition } from '../../core/models/tool.model';
@@ -25,6 +25,7 @@ import { LeadCtaComponent } from '../../shared/lead-cta/lead-cta.component';
             /><span class="eyebrow">{{ categoryName }}</span>
             <h1>{{ guide.title }}</h1>
             <p>{{ guide.description }}</p>
+            <p class="article-meta">Published August 23, 2026 · {{ wordCount }} words</p>
           </div>
         </header>
         <div class="section container article-width prose">
@@ -43,6 +44,15 @@ import { LeadCtaComponent } from '../../shared/lead-cta/lead-cta.component';
               <a [routerLink]="['/tools', t.slug]">{{ t.name }} →</a>
             }
           </section>
+          @if (relatedGuides.length) {
+            <section class="related-box card">
+              <span class="eyebrow">Continue learning</span>
+              <h2>Related ecommerce guides</h2>
+              @for (related of relatedGuides; track related.slug) {
+                <a [routerLink]="['/guides', related.slug]">{{ related.title }} →</a>
+              }
+            </section>
+          }
           <app-lead-cta [source]="'guide-' + guide.slug" />
         </div>
       </article>
@@ -84,6 +94,9 @@ export class GuideComponent {
       headline: this.guide.title,
       description: this.guide.description,
       image: this.seo.absolute('/assets/og-default.png'),
+      datePublished: '2026-08-23',
+      dateModified: '2026-08-23',
+      wordCount: this.wordCount,
       inLanguage: 'en',
       mainEntityOfPage: { '@id': `${this.seo.absolute(path)}#webpage` },
       author: { '@id': `${this.seo.absolute('/')}#organization` },
@@ -113,5 +126,23 @@ export class GuideComponent {
     return (
       this.guide?.related.map((s) => TOOL_MAP.get(s)).filter((t): t is ToolDefinition => !!t) ?? []
     );
+  }
+  protected get relatedGuides(): GuideDefinition[] {
+    return this.guide
+      ? GUIDES.filter(
+          (guide) => guide.category === this.guide!.category && guide.slug !== this.guide!.slug,
+        ).slice(0, 3)
+      : [];
+  }
+  protected get wordCount(): number {
+    if (!this.guide) return 0;
+    return [
+      this.guide.title,
+      this.guide.description,
+      ...this.guide.sections.flatMap((section) => [section.heading, ...section.paragraphs]),
+    ]
+      .join(' ')
+      .trim()
+      .split(/\s+/).length;
   }
 }

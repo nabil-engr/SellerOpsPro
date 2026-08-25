@@ -822,6 +822,10 @@ textarea:focus {
 .check-list-simple li {
   margin: 8px 0;
 }
+.article-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 .error-code {
   font-size: clamp(5rem, 18vw, 11rem);
   line-height: 0.8;

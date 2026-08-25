@@ -2350,7 +2350,7 @@ export const TOOLS: ToolDefinition[] = [
         id: 'url',
         label: 'Destination URL',
         type: 'text',
-        defaultValue: 'https://example.com/product',
+        defaultValue: 'https://store.test/product',
       },
       {
         id: 'source',
@@ -2515,7 +2515,7 @@ export const TOOLS: ToolDefinition[] = [
         id: 'url',
         label: 'Canonical URL',
         type: 'text',
-        defaultValue: 'https://example.com/tools/roas',
+        defaultValue: 'https://sellerops-web.vercel.app/tools/roas',
       },
       {
         id: 'description',

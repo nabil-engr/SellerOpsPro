@@ -51,7 +51,8 @@ const PAGES: Record<PageKey, StaticPage> = {
       {
         heading: 'Contact enquiries',
         paragraphs: [
-          'If you submit the contact form, the backend stores the information you provide so the team can respond. Do not submit passwords, payment card data or other unnecessary sensitive information.',
+          'The contact form prepares a WhatsApp message on your device. Your enquiry is sent only when you choose to send it in WhatsApp. Direct email links open your configured email application.',
+          'WhatsApp, Meta and your email provider process messages under their own privacy terms. Do not submit passwords, payment card data or other unnecessary sensitive information.',
         ],
       },
       {
@@ -63,7 +64,7 @@ const PAGES: Record<PageKey, StaticPage> = {
       {
         heading: 'Analytics, cookies and ads',
         paragraphs: [
-          'This starter project does not ship with an advertising network or third-party analytics identifier configured. Before enabling those services, update this policy and the consent experience to match the services and jurisdictions you actually use.',
+          'SellerOps currently does not configure an advertising network or third-party analytics identifier. If those services are introduced, this policy and the consent experience should be updated to match the services and applicable jurisdictions.',
         ],
       },
     ],
@@ -174,8 +175,8 @@ const PAGES: Record<PageKey, StaticPage> = {
             </section>
           }
           <p class="microcopy">
-            This starter text must be reviewed for your final company, country, hosting setup,
-            analytics, ad network and legal requirements before launch.
+            Last reviewed August 25, 2026. <a routerLink="/contact">Contact SellerOps</a> to report
+            a correction or ask a question.
           </p>
         </div>
       </article>

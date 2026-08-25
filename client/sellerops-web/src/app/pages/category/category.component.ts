@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CATEGORY_MAP, TOOLS } from '../../core/data/tools.data';
+import { GUIDES } from '../../core/data/guides.data';
+import { GuideDefinition } from '../../core/models/guide.model';
 import { ToolCategory, ToolDefinition } from '../../core/models/tool.model';
 import { SeoService } from '../../core/services/seo.service';
 import { ToolDirectoryComponent } from '../../shared/tool-directory/tool-directory.component';
@@ -28,6 +30,30 @@ import { BreadcrumbsComponent } from '../../shared/breadcrumbs/breadcrumbs.compo
       <section class="section container">
         <app-tool-directory [tools]="tools" />
       </section>
+      @if (guides.length) {
+        <section class="section section-muted">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Learn the decisions</span>
+                <h2>{{ category.name }} guides</h2>
+              </div>
+              <a class="text-link" routerLink="/guides">All guides →</a>
+            </div>
+            <div class="guide-grid">
+              @for (guide of guides; track guide.slug) {
+                <article class="guide-card card">
+                  <h3>
+                    <a [routerLink]="['/guides', guide.slug]">{{ guide.title }}</a>
+                  </h3>
+                  <p>{{ guide.description }}</p>
+                  <a class="text-link" [routerLink]="['/guides', guide.slug]">Read guide →</a>
+                </article>
+              }
+            </div>
+          </div>
+        </section>
+      }
     } @else {
       <section class="page-hero">
         <div class="container narrow">
@@ -42,6 +68,7 @@ export class CategoryComponent {
   private readonly seo = inject(SeoService);
   protected category?: ToolCategory;
   protected tools: ToolDefinition[] = [];
+  protected guides: GuideDefinition[] = [];
 
   constructor() {
     this.route.paramMap
@@ -52,6 +79,9 @@ export class CategoryComponent {
   private loadCategory(slug: string): void {
     this.category = CATEGORY_MAP.get(slug);
     this.tools = this.category ? TOOLS.filter((tool) => tool.category === this.category!.slug) : [];
+    this.guides = this.category
+      ? GUIDES.filter((guide) => guide.category === this.category!.slug)
+      : [];
     if (!this.category) {
       this.seo.apply({
         title: 'Category Not Found | SellerOps',

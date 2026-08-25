@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: 'SellerOps Toolkit',
   shortName: 'SellerOps',
-  siteUrl: 'https://example.com',
+  siteUrl: 'https://sellerops-web.vercel.app',
   email: 'nabilmaruf1122@gmail.com',
   whatsappDisplay: '01827801872',
   whatsappNumber: '8801827801872',

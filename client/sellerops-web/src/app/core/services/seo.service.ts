@@ -77,12 +77,21 @@ export class SeoService {
       name: SITE_CONFIG.name,
       url: this.absolute('/'),
       email: SITE_CONFIG.email,
+      telephone: `+${SITE_CONFIG.whatsappNumber}`,
       description: SITE_CONFIG.tagline,
       logo: {
         '@type': 'ImageObject',
         url: this.absolute('/assets/icon-512.svg'),
         width: 512,
         height: 512,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        telephone: `+${SITE_CONFIG.whatsappNumber}`,
+        email: SITE_CONFIG.email,
+        url: SITE_CONFIG.whatsappUrl,
+        availableLanguage: ['English', 'Bengali'],
       },
     };
   }

@@ -5,8 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prebuild": "node ../../scripts/generate-static-seo.mjs",
     "build": "ng build",
-    "build:prod": "ng build --configuration production && npm run validate:seo",
+    "postbuild": "node ../../scripts/finalize-static-seo.mjs",
+    "build:prod": "npm run build && npm run validate:seo",
     "validate:seo": "node ../../scripts/validate-seo.mjs",
     "format": "prettier --write . ../../scripts/*.mjs",
     "format:check": "prettier --check . ../../scripts/*.mjs"

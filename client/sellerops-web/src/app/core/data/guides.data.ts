@@ -28,6 +28,19 @@ export const GUIDES: GuideDefinition[] = [
           'Use markup for quick cost-based price setting. Use margin for product profitability, discount room and ad economics.',
         ],
       },
+      {
+        heading: 'Build a reliable cost base',
+        paragraphs: [
+          'Start with landed product cost, packaging, seller-paid delivery, payment fees and other variable costs. Leaving one of these out makes both markup and margin look healthier than they really are.',
+          'Recheck the calculation before promotions because a discount reduces selling price while most unit costs remain unchanged.',
+        ],
+      },
+      {
+        heading: 'A practical pricing check',
+        paragraphs: [
+          'Record the current cost, normal selling price, planned sale price, margin and markup in one sheet. That makes it easier to compare products and spot items that cannot safely absorb a discount or higher ad cost.',
+        ],
+      },
     ],
     related: ['profit-margin', 'markup-price', 'discount-sale-price'],
   },
@@ -55,6 +68,19 @@ export const GUIDES: GuideDefinition[] = [
         heading: 'Use scenarios',
         paragraphs: [
           'AOV, product mix and return behavior change. Use conservative and optimistic cases instead of one permanent number.',
+        ],
+      },
+      {
+        heading: 'Break-even is not the target',
+        paragraphs: [
+          'Break-even ROAS only marks the point where contribution profit reaches zero. A campaign that operates exactly at that number does not create room for overhead, payroll, growth investment or unexpected returns.',
+          'Set a target ROAS above break-even based on the contribution profit you want from each order.',
+        ],
+      },
+      {
+        heading: 'Inputs to revisit',
+        paragraphs: [
+          'Recalculate when average order value, product mix, discounting, fulfillment cost, payment fees or return rate changes. Compare platform-reported revenue with actual completed orders so cancelled and refunded sales do not inflate the result.',
         ],
       },
     ],
@@ -85,6 +111,19 @@ export const GUIDES: GuideDefinition[] = [
           'Seasonality, viral campaigns and unstable suppliers need more active forecasting and updated assumptions.',
         ],
       },
+      {
+        heading: 'Track lead-time variability',
+        paragraphs: [
+          'Average lead time can hide late deliveries. Record both typical and slow supplier lead times, then use safety stock to protect against the delay range your business can realistically experience.',
+          'A fast-moving product with an unreliable supplier usually needs a different buffer from a stable product sourced locally.',
+        ],
+      },
+      {
+        heading: 'Review the trigger regularly',
+        paragraphs: [
+          'Review reorder points after promotions, seasonal demand changes and supplier performance shifts. A monthly review may suit steady products, while campaign-driven products need a check before each major launch.',
+        ],
+      },
     ],
     related: ['reorder-point', 'safety-stock', 'inventory-days'],
   },
@@ -113,6 +152,18 @@ export const GUIDES: GuideDefinition[] = [
           'Confirmation, address checks, prepaid incentives and better courier processes can be tested.',
         ],
       },
+      {
+        heading: 'Separate recoverable and lost value',
+        paragraphs: [
+          'Returned inventory may still be sellable, but forward delivery, return delivery, packaging damage, call-center time and restocking work can remain lost. Track these components separately instead of treating every returned order as a full product loss.',
+        ],
+      },
+      {
+        heading: 'Measure each intervention',
+        paragraphs: [
+          'Compare failure rate and cost per confirmed order before and after address verification, confirmation calls or prepaid incentives. Keep changes that reduce total loss, not only the visible return count.',
+        ],
+      },
     ],
     related: ['cod-return-loss', 'return-rate', 'refund-loss'],
   },
@@ -135,6 +186,19 @@ export const GUIDES: GuideDefinition[] = [
           'Many services charge the higher of actual and dimensional weight. Smaller packaging can reduce cost even when product weight is unchanged.',
         ],
       },
+      {
+        heading: 'Measure the packed parcel',
+        paragraphs: [
+          'Use the outside length, width and height of the parcel after packing. Product dimensions alone miss empty space, protective material and the final shipping box.',
+          'Round measurements using the carrier rule that applies to the service because small differences can move a parcel into a higher billable band.',
+        ],
+      },
+      {
+        heading: 'Compare services before redesigning packaging',
+        paragraphs: [
+          'Carriers and service levels can use different dimensional divisors and minimum charges. Calculate the same packed parcel under each relevant rule before deciding whether a smaller box or another service produces a real saving.',
+        ],
+      },
     ],
     related: ['dim-weight', 'shipping-profit', 'fulfillment-cost'],
   },
@@ -155,6 +219,18 @@ export const GUIDES: GuideDefinition[] = [
         heading: 'Protect contribution',
         paragraphs: [
           'Check whether the extra contribution created above AOV can absorb average shipping cost, then test conversion and basket size together.',
+        ],
+      },
+      {
+        heading: 'Run a controlled threshold test',
+        paragraphs: [
+          'Choose a threshold slightly above current average order value, then monitor conversion rate, average order value, shipping subsidy and contribution profit together. A larger basket is useful only when the additional margin covers the shipping cost.',
+        ],
+      },
+      {
+        heading: 'Watch customer and product segments',
+        paragraphs: [
+          'Heavy products, remote delivery zones and low-margin categories may need exclusions or a different threshold. Document those rules clearly so customers understand when free shipping applies.',
         ],
       },
     ],
@@ -185,6 +261,19 @@ export const GUIDES: GuideDefinition[] = [
           'Tracking parameters can create URL variants, so landing pages should point search engines to a clean canonical URL.',
         ],
       },
+      {
+        heading: 'Document one naming standard',
+        paragraphs: [
+          'Keep a short shared reference for approved source, medium and campaign values. Lowercase values and a consistent separator reduce accidental duplicates in analytics reports.',
+          'Use content values for meaningful creative or placement variants, not random labels that nobody can interpret later.',
+        ],
+      },
+      {
+        heading: 'Protect clean data',
+        paragraphs: [
+          'Do not place names, email addresses or other personal data in UTM parameters because campaign URLs can appear in browser history, analytics systems and shared messages. Test every generated link before launch and preserve the clean landing-page canonical.',
+        ],
+      },
     ],
     related: ['utm-builder', 'serp-preview', 'website-audit'],
   },
@@ -213,6 +302,19 @@ export const GUIDES: GuideDefinition[] = [
           'Titles and descriptions should accurately describe each page rather than repeat one template everywhere.',
         ],
       },
+      {
+        heading: 'Prioritize indexable pages',
+        paragraphs: [
+          'Index pages that provide a distinct product, category, guide or service experience. Thin filter combinations, internal search results and duplicate tracking URLs should not compete with the preferred page.',
+          'Make sure each important page returns a successful status, has one descriptive main heading and appears in both internal navigation and the XML sitemap.',
+        ],
+      },
+      {
+        heading: 'Measure with Search Console',
+        paragraphs: [
+          'After launch, submit the sitemap and inspect a sample of important URLs. Review indexing reports, search queries, click-through rate and page experience, then improve pages that receive impressions but do not satisfy the search intent.',
+        ],
+      },
     ],
     related: ['website-audit', 'meta-title-checker', 'meta-description-checker', 'slug-generator'],
   },
@@ -239,6 +341,18 @@ export const GUIDES: GuideDefinition[] = [
         heading: 'Keep layout stable',
         paragraphs: ['Consistent aspect ratios and explicit dimensions help avoid layout shifts.'],
       },
+      {
+        heading: 'Deliver the right image size',
+        paragraphs: [
+          'Responsive image candidates let a phone download a smaller file than a desktop display. Load the main product image promptly, but lazy-load images below the first screen without requiring a click or scroll event to reveal their URLs to crawlers.',
+        ],
+      },
+      {
+        heading: 'Use a repeatable export workflow',
+        paragraphs: [
+          'Keep an original master, export the largest storefront size actually needed, compress it, and compare detail at normal viewing size. Record the chosen dimensions and quality range so new catalog images remain visually consistent.',
+        ],
+      },
     ],
     related: ['image-compressor', 'aspect-ratio', 'website-audit'],
   },
@@ -259,6 +373,18 @@ export const GUIDES: GuideDefinition[] = [
         heading: 'Compare channels by contribution',
         paragraphs: [
           'A marketplace may convert better but charge more fees; your own store may have lower platform fees but higher acquisition cost. Compare contribution profit.',
+        ],
+      },
+      {
+        heading: 'Build the complete fee stack',
+        paragraphs: [
+          'List percentage commission, payment processing, fulfillment, storage, fixed order charges, promotional deductions and seller-funded delivery. Apply each fee to the correct base because some percentages use item price while others use the total customer payment.',
+        ],
+      },
+      {
+        heading: 'Test sensitivity before changing price',
+        paragraphs: [
+          'Model normal, discounted and high-return scenarios. A small fee or return-rate change can remove the remaining profit from a low-margin product, so review the calculation whenever marketplace terms or fulfillment methods change.',
         ],
       },
     ],
