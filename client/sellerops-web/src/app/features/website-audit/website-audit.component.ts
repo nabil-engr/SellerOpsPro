@@ -101,7 +101,8 @@ export class WebsiteAuditComponent {
         }),
       );
     } catch (e: unknown) {
-      const x = e as { error?: { error?: string }; message?: string };
+      const x: { error?: { error?: string }; message?: string } =
+        typeof e === 'object' && e !== null ? e : {};
       this.error = x.error?.error ?? x.message ?? 'Audit failed. Check the URL and try again.';
     } finally {
       this.loading = false;
