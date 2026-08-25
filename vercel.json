@@ -1,9 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "cd client/sellerops-web && npm ci",
-  "buildCommand": "cd client/sellerops-web && npm run build",
-  "outputDirectory": "client/sellerops-web/dist/sellerops-web/browser",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/sellerops-web/browser",
   "cleanUrls": true,
   "trailingSlash": false
 }
