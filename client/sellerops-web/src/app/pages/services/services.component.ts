@@ -52,25 +52,25 @@ import { SeoService } from '../../core/services/seo.service';
           <div class="pricing-card card">
             <span class="pill">Entry</span>
             <h3>Essential Care</h3>
-            <strong>From ৳1,000/mo</strong>
+            <strong>From ৳3,000/mo</strong>
             <p>Small sites, health checks and tightly scoped minor support.</p>
           </div>
           <div class="pricing-card card featured">
             <span class="pill">Popular</span>
             <h3>Business Care</h3>
-            <strong>From ৳2,000/mo</strong>
+            <strong>From ৳5,000/mo</strong>
             <p>Backups, troubleshooting and business-site support.</p>
           </div>
           <div class="pricing-card card">
             <span class="pill">Growth</span>
             <h3>Professional Care</h3>
-            <strong>From ৳4,000/mo</strong>
+            <strong>From ৳7,000/mo</strong>
             <p>Ecommerce and growing sites with prioritized support.</p>
           </div>
           <div class="pricing-card card">
             <span class="pill">Priority</span>
             <h3>Custom Care</h3>
-            <strong>From ৳7,500/mo</strong>
+            <strong>From ৳9,000/mo</strong>
             <p>Complex applications, APIs and deeper operational support.</p>
           </div>
         </div>
