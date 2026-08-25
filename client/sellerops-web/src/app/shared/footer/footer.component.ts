@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TOOL_CATEGORIES } from '../../core/data/tools.data';
+import { SITE_CONFIG } from '../../core/site.config';
 @Component({
   selector: 'app-footer',
   standalone: true,
@@ -22,7 +23,10 @@ import { TOOL_CATEGORIES } from '../../core/data/tools.data';
       <div>
         <h2>Company</h2>
         <a routerLink="/services">Development services</a><a routerLink="/about">About</a
-        ><a routerLink="/contact">Contact</a><a routerLink="/editorial-policy">Editorial policy</a>
+        ><a routerLink="/contact">Contact</a
+        ><a [href]="site.whatsappUrl" target="_blank" rel="noopener noreferrer">WhatsApp</a
+        ><a [href]="'mailto:' + site.email">{{ site.email }}</a
+        ><a routerLink="/editorial-policy">Editorial policy</a>
       </div>
       <div>
         <h2>Legal</h2>
@@ -38,5 +42,6 @@ import { TOOL_CATEGORIES } from '../../core/data/tools.data';
 })
 export class FooterComponent {
   protected readonly categories = TOOL_CATEGORIES;
+  protected readonly site = SITE_CONFIG;
   protected readonly year = new Date().getFullYear();
 }

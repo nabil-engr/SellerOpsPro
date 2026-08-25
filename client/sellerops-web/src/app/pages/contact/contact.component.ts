@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
-import { LeadService } from '../../core/services/lead.service';
+import { SITE_CONFIG } from '../../core/site.config';
 import { SeoService } from '../../core/services/seo.service';
 @Component({
   standalone: true,
@@ -12,8 +11,8 @@ import { SeoService } from '../../core/services/seo.service';
         <span class="eyebrow">Project & support enquiry</span>
         <h1>Tell us what is slowing your business down.</h1>
         <p>
-          Share the website, software problem or new project. The ASP.NET backend stores the enquiry
-          so you can later connect email, CRM or ticketing.
+          Share the website, software problem or new project. Submitting the form opens WhatsApp
+          with your enquiry ready to send.
         </p>
       </div>
     </section>
@@ -77,20 +76,27 @@ import { SeoService } from '../../core/services/seo.service';
             [(ngModel)]="model.message"
           ></textarea>
         </label>
-        <button class="button" type="submit" [disabled]="sending || form.invalid">
-          {{ sending ? 'Sending…' : 'Send enquiry' }}
+        <button class="button" type="submit" [disabled]="form.invalid">
+          Continue on WhatsApp
         </button>
-        @if (status) {
-          <div
-            class="alert"
-            [class.alert-error]="hasError"
-            [attr.role]="hasError ? 'alert' : 'status'"
-          >
-            {{ status }}
-          </div>
-        }
       </form>
       <aside class="card contact-aside">
+        <div class="contact-direct">
+          <span class="eyebrow">Contact directly</span>
+          <h2>WhatsApp or email</h2>
+          <p class="contact-detail">WhatsApp: {{ site.whatsappDisplay }}</p>
+          <p class="contact-detail">Email: {{ site.email }}</p>
+          <div class="button-row">
+            <a
+              class="button"
+              [href]="directWhatsappUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Chat on WhatsApp</a
+            >
+            <a class="button button-secondary" [href]="emailUrl">Send email</a>
+          </div>
+        </div>
         <span class="eyebrow">Good enquiry details</span>
         <h2>Include these if possible</h2>
         <ul class="check-list-simple">
@@ -105,8 +111,12 @@ import { SeoService } from '../../core/services/seo.service';
 })
 export class ContactComponent {
   private readonly seo = inject(SeoService);
-  private readonly leads = inject(LeadService);
   private readonly route = inject(ActivatedRoute);
+  protected readonly site = SITE_CONFIG;
+  protected readonly directWhatsappUrl = `${SITE_CONFIG.whatsappUrl}?text=${encodeURIComponent(
+    'Hello SellerOps, I would like to discuss a project or support request.',
+  )}`;
+  protected readonly emailUrl = `mailto:${SITE_CONFIG.email}`;
   protected model = {
     name: '',
     email: '',
@@ -116,9 +126,6 @@ export class ContactComponent {
     source: this.route.snapshot.queryParamMap.get('source') ?? 'contact-page',
     honeypot: '',
   };
-  protected sending = false;
-  protected status = '';
-  protected hasError = false;
   constructor() {
     this.seo.apply({
       title: 'Contact SellerOps — Website & Software Help',
@@ -139,28 +146,21 @@ export class ContactComponent {
       ],
     });
   }
-  protected async submit(form: NgForm): Promise<void> {
-    if (this.sending || form.invalid) return;
-    this.sending = true;
-    this.status = '';
-    this.hasError = false;
-    try {
-      const r = await firstValueFrom(this.leads.submit(this.model));
-      this.status = `Thanks — your enquiry was received. Reference: ${r.reference}`;
-      form.resetForm({
-        name: '',
-        email: '',
-        phone: '',
-        website: '',
-        message: '',
-        source: this.model.source,
-        honeypot: '',
-      });
-    } catch {
-      this.hasError = true;
-      this.status = 'The enquiry could not be sent. Please try again.';
-    } finally {
-      this.sending = false;
-    }
+  protected submit(form: NgForm): void {
+    if (form.invalid || this.model.honeypot) return;
+
+    const message = [
+      'Hello SellerOps, I have a project or support enquiry.',
+      `Name: ${this.model.name}`,
+      `Email: ${this.model.email}`,
+      this.model.phone ? `Phone / WhatsApp: ${this.model.phone}` : '',
+      this.model.website ? `Website / app: ${this.model.website}` : '',
+      `Details: ${this.model.message}`,
+      `Source: ${this.model.source}`,
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    window.location.assign(`${SITE_CONFIG.whatsappUrl}?text=${encodeURIComponent(message)}`);
   }
 }

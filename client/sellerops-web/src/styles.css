@@ -802,6 +802,19 @@ textarea:focus {
 .contact-form > .field {
   margin: 15px 0;
 }
+.contact-direct {
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.contact-detail {
+  margin: 7px 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.contact-direct .button-row {
+  margin-top: 16px;
+}
 .check-list-simple {
   padding-left: 20px;
   color: var(--muted);
