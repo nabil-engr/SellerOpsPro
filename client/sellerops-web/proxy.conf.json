@@ -1,0 +1,5 @@
+{
+  "/api": { "target": "https://localhost:7174", "secure": false, "changeOrigin": true },
+  "/sitemap.xml": { "target": "https://localhost:7174", "secure": false },
+  "/robots.txt": { "target": "https://localhost:7174", "secure": false }
+}
