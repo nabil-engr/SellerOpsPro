@@ -121,6 +121,21 @@ export class HomeComponent {
       title,
       description,
       path: '/',
+      keywords: [
+        'profit margin calculator',
+        'ecommerce calculators',
+        'roas calculator',
+        'break even roas calculator',
+        'markup vs margin calculator',
+        'reorder point calculator',
+        'target cpa calculator',
+        'safety stock calculator',
+        'dimensional weight calculator',
+        'cod return loss calculator',
+        'utm campaign builder',
+        'free sku generator',
+        'ecommerce seller tools'
+      ],
       jsonLd: [
         this.seo.websiteSchema(),
         this.seo.organizationSchema(),

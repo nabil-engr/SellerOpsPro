@@ -7,6 +7,7 @@ export interface SeoPayload {
   title: string;
   description: string;
   path: string;
+  keywords?: string[];
   type?: 'website' | 'article';
   image?: string;
   imageAlt?: string;
@@ -34,6 +35,9 @@ export class SeoService {
       : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
     this.title.setTitle(p.title);
     this.meta.updateTag({ name: 'description', content: p.description });
+    if (p.keywords && p.keywords.length > 0) {
+      this.meta.updateTag({ name: 'keywords', content: p.keywords.join(', ') });
+    }
     this.meta.updateTag({ name: 'robots', content: robots });
     this.meta.updateTag({ name: 'googlebot', content: robots });
     this.meta.updateTag({ property: 'og:type', content: p.type ?? 'website' });

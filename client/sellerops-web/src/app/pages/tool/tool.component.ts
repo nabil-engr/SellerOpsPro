@@ -244,6 +244,7 @@ export class ToolComponent {
       title,
       description: tool.description,
       path,
+      keywords: tool.keywords,
       imageAlt: `${tool.name} calculator and ecommerce seller tool`,
       jsonLd: [
         appSchema,
